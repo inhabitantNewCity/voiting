@@ -1,0 +1,14 @@
+
+.top-bar{
+	background-color: white; 
+	border: 0;
+}
+.container{
+	background-image: url("img/background.jpg");
+}
+.main-background-container{
+	background-image: url("../img/background.jpg");	
+}
+.font-label-class{
+	color: white; 
+}
