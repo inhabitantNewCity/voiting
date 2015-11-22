@@ -1,9 +1,10 @@
-var idInputVariants = 1;
+var idInputVariants = 3;
 function addNewVariant(){
 	//alert('dfgdfg1');
 	var form = document.getElementById('createNewVoiting');
 	var divControlGroup = document.createElement('div');
-	divControlGroup.className = 'control-group';
+	//divControlGroup.class = "control-group has-feedback"
+	divControlGroup.className = 'control-group has-feedback';
 	var divControl = document.createElement('div');
 	divControl.className = 'control';
 	var h2 = document.createElement('h2');
@@ -12,6 +13,9 @@ function addNewVariant(){
 	input.type = 'text';
 	input.id = 'inputEmail';
 	input.name  = 'variant' + idInputVariants;
+	input.className = 'form-control';
+	input.required = "required";
+	input.pattern = '/[A-Za-z0-9]{6,40}/i';
 	idInputVariants++;
 	//alert(input.name);
 	input.placeholder = 'add variant';
@@ -28,7 +32,7 @@ function setPrivate(){
 	var form = document.getElementById('createNewVoiting');
 	//form.action = '../php/SaveCurentPagePrivate.php';
 	var divControlGroup = document.createElement('div');
-	divControlGroup.className = 'control-group';
+	divControlGroup.className = 'control-group has-feedback' ;
 	var divControl = document.createElement('div');
 	divControl.className = 'control';
 	var h2 = document.createElement('h2');
@@ -37,6 +41,10 @@ function setPrivate(){
 	input.type = 'text';
 	input.id = 'inputEmail';
 	input.name = 'mail';
+	input.className = 'form-control';
+	input.required = "required";
+	input.pattern = '/[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i';
+	//class="form-control" required="required"pattern="[A-Za-z0-9]{6,40}"
 	//input.onkeyup = 'isValidedEMail(form)';
 	input.placeholder = 'eMail';
 	var h2Title = document.createElement('h2');
@@ -83,28 +91,41 @@ function isValidedEMail(form){
 			return false;
 		}
 }
+function isValidedOtherInput(form){
+	var ePattern = /[0-9a-z_]{1,50}/i;
+	//alert('	sdfghjg');
+	//var bool = ePattern.test(eMail);
+	for(var i = 0; i < form.elements.length; i++){
+		var e = form.elements[i];
+		if(e != form.mail);
+		{
+			alert(e);
+
+			if(ePattern.test(e.value)){
+				alert('	sdfghjg');
+				return true;
+				
+			}
+			else{
+				alert('	sdfghjg2');
+				return false;
+				
+			}
+		}
+	}
+}
 function saveCurentPage(){
 	var form = document.getElementById('createNewVoiting');
 	if(isPrivate(form)){
 		if(isValidedEMail(form)){		
 			form.action = '../php/SaveCurentPagePrivate.php';
-			alert('dfghjkl');
+			//alert('dfghjkl');
 		}else{
 			return;
 		}
 	}
+	if(!isValidedOtherInput(form)){
+		return;
+	}
 	form.submit();
-	//var form = document.getElementById('createNewVoiting');
-	      //var msg   = $('#createNewVoiting').serialize();
-        //$.ajax({
-          //type: 'POST',
-          //url: '../php/SaveCurentPage.php',
-          //data: msg,
-          //success: function(data) {
-            //$('.results').html(data);
-          //},
-          //error:  function(xhr, str){
-            //    alert('Возникла ошибка: ' + xhr.responseCode);
-            //}
-        //});
 }
