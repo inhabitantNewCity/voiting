@@ -99,15 +99,15 @@ function isValidedOtherInput(form){
 		var e = form.elements[i];
 		if(e != form.mail);
 		{
-			alert(e);
+			//alert(e);
 
 			if(ePattern.test(e.value)){
-				alert('	sdfghjg');
+				//alert('	sdfghjg');
 				return true;
 				
 			}
 			else{
-				alert('	sdfghjg2');
+				//alert('	sdfghjg2');
 				return false;
 				
 			}

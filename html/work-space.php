@@ -108,7 +108,7 @@ and open the template in the editor.
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="../js/CreateNewVoiting.js"></script>
-<!--    <script>
+    <script>
         $(function() {
           //при нажатии на кнопку с id="save"
           $('#save').click(function() {
