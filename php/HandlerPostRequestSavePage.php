@@ -1,7 +1,4 @@
 <?php
-/**
-* 
-*/
 class HandlerPostRequestSavePage {
 	var $name;
 	var $arrayVariants;
@@ -14,22 +11,9 @@ class HandlerPostRequestSavePage {
 	{	
 		$this->name = $post["title"];
 		$this->sizeArray = count($post);
-		//$this->arrayVariants = &$post;
 		foreach ($post as $color) {
     		$this->arrayVariants[] = $color;
 		}
-		//unset($arrayVariants["title"]);
-		//for($i = 0; $i < $this->sizeArray; $i++)
-				//echo $this->arrayVariants[$i] . "<br>";
-	}
-	function getName(){
-		return $this->name;
-	}
-	function getArray(){
-		return $this->arrayVariants;
-	}
-	function getSize(){
-		return $this->sizeArray;
 	}	
 	function createFile(){
 		$this->id = fopen("config.txt","r+");
@@ -49,10 +33,10 @@ class HandlerPostRequestSavePage {
 	}
 	function alertPattern(){
 		$this->createFile(); 
-		if($this->sizeArray > 3){
-			$this->addNewVariant();
-			$this->setStatistic();
-		}
+		//if($this->sizeArray > 3){
+			//$this->addNewVariant();
+			//$this->setStatistic();
+		//}
 		$currentFile = fopen($this->file, "r+");
 		$string = ''; //= file_get_contents($this->file);
 		//echo $this->file; 
@@ -72,11 +56,11 @@ class HandlerPostRequestSavePage {
 		return $string;
 	}
 	function setCountVariant($string){
-		$string = preg_replace("/(<!--countElement-->)/si",(string)($this->sizeArray - 1),$string);
+		$string = preg_replace("/(<!--countElement-->)/si",($this->sizeArray - 1),$string);
 		return $string;
 	}
-	function addNewVariant(){
-		$str = file_get_contents($this->file);
+	function addNewVariant($str){
+		//$str = file_get_contents($this->file);
 		$countNewVariants = $this->sizeArray - 3;
 		if(preg_match('/<!--!@#%start-->(.*?)<!--!@#%finish-->/si', $str, $arr))
 			$title = $arr[1];
@@ -86,19 +70,18 @@ class HandlerPostRequestSavePage {
 		$tmp = "";
 		for($i = 0; $i < $countNewVariants; $i++ ){
 				$tmp = $tmp . $title;
-				$tmp = preg_replace("/(radioButtonVoteO)/si","radioButtonVote" . (string)($i + 2),$tmp);
+				$tmp = preg_replace("/(radioButtonVote0)/si","radioButtonVote" . ($i + 2),$tmp);
+				$tmp = preg_replace("/id=\"(\d+)\"/si", "id=\"".($i+2)."\"", $tmp);
+				$tmp = preg_replace("/span(\d+)/si", "span".($i+2), $tmp);
 		}
 		$str = preg_replace("/(<!--!@#%add-->)/si",$tmp,$str);
-		//$str = $this->setStatistic($str);
-		//echo $str;
-		//fclose($this->file);
-		$this->wrieteFile($str);
-		//echo $str;
+		return $str;
+		//$this->wrieteFile($str);
 
 	}
-	function setStatistic(){
+	function setStatistic($str){
 
-		$str = file_get_contents($this->file);
+		//$str = file_get_contents($this->file);
 		$countNewVariants = $this->sizeArray - 3;
 		if(preg_match('/<!--StartCountClick-->(.*?)<!--StartCountClick-->/si', $str, $arr))
 			$title = $arr[1];
@@ -108,10 +91,12 @@ class HandlerPostRequestSavePage {
 		$tmp = "";
 		for($i = 0; $i < $countNewVariants; $i++ ){
 				$tmp = $tmp . $title;
-				$tmp = preg_replace("/(voit0)/si","voit" . (string)($i + 2),$tmp);
+				$tmp = preg_replace("/(voit1)/si","voit" . (string)($i + 2),$tmp);
+				$tmp = preg_replace("/(<--currentNumberVoit1=0-->)/si","<--currentNumberVoit".(string)($i + 2)."=0-->",$tmp);
 		}
 		$str = preg_replace("/(<!--addNewRadioButton-->)/si",$tmp,$str);
-		$this->wrieteFile($str);
+		return $str;
+		//$this->wrieteFile($str);
 
 	}
 	function wrieteFile($str){
@@ -126,6 +111,10 @@ class HandlerPostRequestSavePage {
 	function getFileVoiting(){
 
 		$str = $this->alertPattern();
+		if($this->sizeArray > 3){
+			$str = $this->addNewVariant($str);
+			$str = $this->setStatistic($str);
+		}
 		//$this->addNewVariant($str);
 				//$filePattern = fopen("../html/currentVotings/pattern.php", 		
 		

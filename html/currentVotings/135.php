@@ -84,7 +84,7 @@ and open the template in the editor.
               <div class="control-group has-feedback">
                   <label class="control-label" for="inputEmail"><h2>Current link</h2></label>
                   <div class="controls">
-                    <h2><input type="text" id="inputEmail" name="variant1" placeholder="add variant" class="form-control" required="required">http://localhost/voting/html/currentVotings/135.php</h2>
+                    <h2 id = "linkOnPage"><input type="text" id="inputEmail" name="variant1" placeholder="add variant" class="form-control" required="required">http://localhost/voting/html/currentVotings/135.php</h2>
                   </div>
                 </div>
             </div>

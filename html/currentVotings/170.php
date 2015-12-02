@@ -1,4 +1,5 @@
  <!DOCTYPE html>
+
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -48,6 +49,8 @@ and open the template in the editor.
               <ul class="dropdown-menu" role="menu">
                 <!--<li><a href="#" id="save" onclick="saveCurentPage()"><span class = "Color-top-span">Save file</span></a></li>-->
                 <li><a href="html/work-space.php"><span class = "Color-top-span">New file</span></a></li>
+                <li class="divider"></li>
+                <li><a href="#"><span class = "Color-top-span dropdown-header">Get link this voiting</span></a></li>
               </ul>
             </li>
           </ul>
@@ -59,42 +62,42 @@ and open the template in the editor.
       <div class=" jumbotron main-background-container">
         <div class="container">
           <div class="row">
+            <div class="col-md-4 col-lg-4"></div>
             <div class="col-md-4 col-lg-4">
-                <form  class="form-horizontal" id="createNewVoiting"  method="POST" action="javascript:void(null);">
+                <form onsubmit="vote()" class="form-horizontal" id="createNewVoiting"  method="POST" action="javascript:void(null);">
                   <div class="control-group has-feedback" id="firstDiv">
-                  <label class="control-label" for="inputEmail"><h2 class="textInVoiting">!@#%First variants!@#%</h2></label>
+                  <label class="control-label" for="inputEmail"><h2 class="textInVoiting">adasdasd</h2></label>
                   <span class="glyphicon form-control-feedback"></span>
-
                 </div>
-                <br>
-                    <p class = "textInVoiting" id = "fildParent"><b = class = "textInVoiting">Choose of variants:</b><Br><br>
-                        
+                    <p class = "textInVoiting"><b = class = "textInVoiting">Choose of variants:</b><Br>
+                        <!--!@#%add-->
                         <!--!@#%start-->
-                    <span id = "span0" class = "textInVoiting"><input type="radio" name="voit" id="0" value="radioButtonVote0"class = "textInVoiting"> !@#%First variants!@#%</span><br>
+                    <input type="radio" name="voit" value="radioButtonVote0"class = "textInVoiting"> sdasdsadsd<Br>
                         <!--!@#%finish-->
-                    <span id = "span1" class = "textInVoiting"><input type="radio" id="1" name="voit" value="radioButtonVote1"class = "textInVoiting"> !@#%Second variants!@#%</span><br>
-                    <!--!@#%add-->
+                    <input type="radio" name="voit" value="radioButtonVote1"class = "textInVoiting"> asdasdasdsad<Br>
                     </p>
-                    <p id="divSubmit"><input type="button" id = "submitVoite" onclick="vote()"  value="Submit">
-                    <input type="reset" id = "resetVoite" value="Resalt">
-                    <input type="reset" id="cancelVoite" value="Cancel"></p>
-                    <input type="hidden" id="countVoite" name = "countVoite" value="<!--countElement-->">
-                    <input id = "linkOnPage" type="hidden"  name="link" value="<!--currentLink-->">
-                    <input type="hidden" name = "voit0" value="<--currentNumberVoit0=0-->">
+                    <p><input type="button" onclick="vote()" value="Submit">
+                    <input type="reset" value="Resalt">
+                    <input type="reset" value="Cancel"></p>
+                    <input type="hidden" name = "countVoite" value="2">
+                    <input id = "linkOnPage" type="hidden"  name="link" value="http://localhost/voting/html/currentVotings/170.php">
+                    <input type="hidden" name = "voit0" value="<--currentNumberVoit=0-->">
                         <!--StartCountClick-->
-                    <input type="hidden" name = "voit1" value="<--currentNumberVoit1=0-->">
+                    <input type="hidden" name = "voit1" value="<--currentNumberVoit=0-->">
                     <!--StartCountClick-->
                     <!--addNewRadioButton-->
               </form>
             </div>
-            <div class="col-md-4 col-lg-4"></div>
             <div class="col-md-4 col-lg-4">
               <div class="control-group has-feedback">
                   <label class="control-label"  for="inputEmail"><h2 class = "textInVoiting">Current link</h2></label>
                   <div class="controls">
-                    <h2><input id = "linkOnPage" type="text" id="inputEmail" name="variant1" value="<!--currentLink-->" class="form-control" required="required"></h2>
+                    <h2><input id = "linkOnPage" type="text" id="inputEmail" name="variant1" value="http://localhost/voting/html/currentVotings/170.php" class="form-control" required="required"></h2>
                   </div>
                 </div>
+                <div id="vote_status">response</div>
+                <div class="progress progress-success progress-striped">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 10%";></div>
               </div>
             </div>
           </div>
