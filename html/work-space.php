@@ -45,19 +45,9 @@ and open the template in the editor.
                 <li><a href="#" id="save" onclick="saveCurentPage()"><span class = "Color-top-span">Save file</span></a></li>
                 <li><a href="html/work-space.php"><span class = "Color-top-span">New file</span></a></li>
                 <li class="divider"></li>
-                <li><a href="#"><span class = "Color-top-span dropdown-header">Get link this voiting</span></a></li>
               </ul>
             </li>
           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class = "Color-top-span">Property Voiting</span> <span class="Color-top-span caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#" onclick="setPrivate()"  data-tuggle = "tooltip" title="Voiting result will be sended in your e-mail"><span class = "Color-top-span ">Set private </span></a></li>
-                <li><a href="#" data-tuggle = "tooltip" title="Voiting result will be visible all"><span class = "Color-top-span">Set public</span></a></li>
-              </ul>
-            </li>
-            <li>
-            <a href="#" data-tuggle = "tooltip" title="Voiting result will be sended in your e-mail"><span class = "Color-top-span ">Show page voting</span></a>
-            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
